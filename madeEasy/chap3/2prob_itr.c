@@ -32,10 +32,8 @@ void printnFromLast(node *h, int n) {
   while (lastptr != NULL) {
     if(count >= n) {
       nthptr = nthptr->next;
-      lastptr = lastptr->next;
-    } else {
-      lastptr = lastptr->next;
     }
+    lastptr = lastptr->next;
     count++;
   }
   if(count < n) {
