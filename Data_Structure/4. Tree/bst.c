@@ -1,4 +1,4 @@
-#include <stdio.h>
+﻿#include <stdio.h>
 #include <stdlib.h>
 
 struct BST {
@@ -29,8 +29,6 @@ int search(node *root, int num) {
     search(root->right, num);
 }
 
-
-//The iterative way of traversal is written in iterativeTreeTraversal.txt
 void inorder(node *t) {
   if(t != NULL) {
     inorder(t->left);
@@ -59,16 +57,10 @@ void findMax(node *root) {
   printf("\nThe maximum element in tree is %d\n", root->data);
 }
 
-//another program to find height by iterative way is written in another file named findTreeHeightIterative.txt
 int findHeight(node *root) {
   if(root == NULL)
     return -1;
   return max(findHeight(root->left), findHeight(root->right)) + 1;
-}
-
-// For this program check video 35 of Data Structure playlist in mycodeschool library
-int isBST(node *root) {
-
 }
 
 node* search4Del(node *root, int num) {
@@ -80,24 +72,11 @@ node* search4Del(node *root, int num) {
     search(root->right, num);
 }
 
-// It has 3 cases
-// 1. Node has no children
-// 2. Node has 1 children
-// 3. Node has 2 children
-// For this program check video 36 of Data Structure playlist in mycodeschool library
-void delete(node *root, int data) {
-  
-}
-
-void inorderSuccesor(node *root, int data) {
-  
-}
-
 void main() {
   int ch, num;
   node *newNode;
   while(1) {
-  printf("\nEnter your choice\n0. Exit\n1. Create or Insert\n2. Search\n3. Traverse\n4. Delete\n5. Find minimum.\n6. Find maximum.\n\n");
+  printf("\nEnter your choice\n0. Exit\n1. Create or Insert\n2. Search\n3. Traverse\n4. Find minimum.\n5. Find maximum.\n\n");
   scanf("%d", &ch);
   switch (ch) {
     case 0:
@@ -124,12 +103,9 @@ void main() {
 	    inorder(root);
 	    break;
 	  case 4:
-	    delete(root);
-	    break;
-	  case 5:
 	    findMin(root);
 	    break;
-	  case 6:
+	  case 5:
 	    findMax(root);
 	    break;
     }
