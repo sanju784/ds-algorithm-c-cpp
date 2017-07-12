@@ -14,16 +14,16 @@ queue <node*> q;
 node *create() {
   node* p;
   int n;
-  printf("\nEnter data (Enter -1 if no child node) : ");
-  scanf("%d", &n);
+  cout<<"\nEnter data (Enter -1 if no child node) : ";
+  cin>>n;
   if(n == -1) {
     return NULL;
   }
   p = (node*)malloc(sizeof(node));
   p->data = n;
-  printf("\nEnter left child of %d", n);
+  cout<<"\nEnter left child of "<<n;
   p->left = create();
-  printf("\nEnter right child of %d", n);
+  cout<<"\nEnter right child of "<<n;
   p->right = create();
   return p;
 }
@@ -63,6 +63,6 @@ int levelMaxSum(node *root) {
 int main() {
   node* root;
   root = create();
-  printf("\nThe maximum sum of nodes is at %d level.", levelMaxSum(root));
+  cout<<"\nThe maximum sum of nodes is at level : "<<levelMaxSum(root);
   return 0;
 }

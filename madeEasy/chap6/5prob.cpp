@@ -14,31 +14,33 @@ queue <node*> q;
 node *create() {
   node* p;
   int n;
-  printf("\nEnter data (Enter -1 if no child node) : ");
-  scanf("%d", &n);
+  cout<<"\nEnter data (Enter -1 if no child node) : ";
+  cin>>n;
   if(n == -1) {
     return NULL;
   }
   p = (node*)malloc(sizeof(node));
   p->data = n;
-  printf("\nEnter left child of %d", n);
+  cout<<"\nEnter left child of "<<n;
   p->left = create();
-  printf("\nEnter right child of %d", n);
+  cout<<"\nEnter right child of "<<n;
   p->right = create();
   return p;
 }
 
 // using level order traversal
 // inserting at fist null position
-void insertInTree(node *p, int n) {
+void insertInTree(node **p, int n) {
   node *newNode = (node*)malloc(sizeof(node));
   newNode->data = n;
   newNode->left = NULL;
   newNode->right = NULL;
-  if(p) {
-    q.push(p);
+	  
+  if(*p) {
+    q.push(*p);
   } else {
-    p = newNode;
+    *p = newNode;
+	return;
   }
   node *temp;
   while(!q.empty()) {
@@ -61,7 +63,7 @@ void insertInTree(node *p, int n) {
 void inOrder(node *p) {
   if(p) {
     inOrder(p->left);
-    printf("%d ", p->data);
+    cout<<p->data<< " ";
     inOrder(p->right);
   }
 }
@@ -70,19 +72,14 @@ int main() {
   node* root;
   root = create();
   int n;
-  printf("\nInorder traversal of tree before insertion.\n");
+  cout<<"\nInorder traversal of tree before insertion.\n";
   inOrder(root);
-  printf("\nEnter the number you want to insert. ");
-  scanf("%d", &n);
-  if(root) {
-    insertInTree(root, n);
-  } else {
-    root = (node*)malloc(sizeof(node));
-    root->data = n;
-    root->left = NULL;
-    root->right = NULL;
-  }
-  printf("\nInorder traversal of tree after insertion.\n");
+  cout<<"\nEnter the number you want to insert. ";
+  cin>>n;
+  
+    insertInTree(&root, n);
+
+  cout<<"\nInorder traversal of tree after insertion.\n";
   inOrder(root);
   return 0;
 }

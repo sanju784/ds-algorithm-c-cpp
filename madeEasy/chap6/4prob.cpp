@@ -15,16 +15,16 @@ queue <node*> q;
 node *create() {
   node* p;
   int n;
-  printf("\nEnter data (Enter -1 if no child node) : ");
-  scanf("%d", &n);
+  cout<<"\nEnter data (Enter -1 if no child node) : ";
+  cin>>n;
   if(n == -1) {
     return NULL;
   }
   p = (node*)malloc(sizeof(node));
   p->data = n;
-  printf("\nEnter left child of %d", n);
+  cout<<"\nEnter left child of "<<n;
   p->left = create();
-  printf("\nEnter right child of %d", n);
+  cout<<"\nEnter right child of "<<n;
   p->right = create();
   return p;
 }
@@ -55,12 +55,12 @@ int main() {
   node* root;
   root = create();
   int n;
-  printf("\nEnter the number you want to search. ");
-  scanf("%d", &n);
+  cout<<"\nEnter the number you want to search. ";
+  cin>>n;
   bool res = findInTree(root, n);
   if(res)
-    printf("\n%d exists in tree.", n);
+    cout<<n<<" exists in tree.\n";
   else
-    printf("\n%d does not exist in tree.", n);
+    cout<<n<<" does not exist in tree.\n";
   return 0;
 }

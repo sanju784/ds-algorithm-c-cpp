@@ -15,16 +15,16 @@ queue <node*> q;
 node *create() {
   node* p;
   int n;
-  printf("\nEnter data (Enter -1 if no child node) : ");
-  scanf("%d", &n);
+  cout<<"\nEnter data (Enter -1 if no child node) : ";
+  cin>>n;
   if(n == -1) {
     return NULL;
   }
   p = (node*)malloc(sizeof(node));
   p->data = n;
-  printf("\nEnter left child of %d", n);
+  cout<<"\nEnter left child of "<<n;
   p->left = create();
-  printf("\nEnter right child of %d", n);
+  cout<<"\nEnter right child of "<<n;
   p->right = create();
   return p;
 }
@@ -32,14 +32,14 @@ node *create() {
 void inorder(node *p) {
   if (p) {
     inorder(p->left);
-    printf("%d ", p->data);
+    cout<<" "<<p->data;
     inorder(p->right);
   }
 }
 
 void deleteNode(node *p, int n) {
   if(!p){
-    printf("\nTree is empty.\n");
+    cout<<"\nTree is empty.\n";
     return;
   }
   if (p->data == n && p->left == NULL && p->right == NULL) {
@@ -86,17 +86,17 @@ void deleteNode(node *p, int n) {
 int main() {
   node* root;
   root = create();
-  printf("\nThe Inorder traversal of tree before deletion is \n");
+  cout<<"\nThe Inorder traversal of tree before deletion is \n";
   inorder(root);
   int n;
-  printf("\n\nEnter the data of node you want to delete  ");
-  scanf("%d", &n);
+  cout<<"\n\nEnter the data of node you want to delete  ";
+  cin>>n;
   deleteNode(root, n);
   if(root->data == INT_MIN) {
-    printf("\nTree is now empty.\n");
+    cout<<"\nTree is now empty.\n";
     free(root);
   } else {
-    printf("\nThe Inorder traversal of tree after deletion is \n");
+    cout<<"\nThe Inorder traversal of tree after deletion is \n";
     inorder(root);
   }
   return 0;
