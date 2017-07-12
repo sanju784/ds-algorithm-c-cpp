@@ -25,14 +25,13 @@ node *create() {
 }
 
 bool find(node *p, int n) {
-  bool res = false;
-  if(p) {
+  while(p != NULL) {
     if(p->data == n)
       return true;
-    find(p->left, n);
-    find(p->right, n);
+    return find(p->left, n);
+    return find(p->right, n);
   }
-  return res;
+  return false;
 }
 
 void main() {
